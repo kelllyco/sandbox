@@ -15,6 +15,7 @@ exports.create = (req, res) => {
         description: req.body.description,
         category: req.body.category,
         price: req.body.price,
+        image: req.body.image,
         available: req.body.available ? req.body.available : false
     });
 

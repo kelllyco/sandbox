@@ -5,7 +5,8 @@ module.exports = mongoose => {
             description: String,
             category: String,
             price: Number,
-            available: Boolean
+            available: Boolean,
+            image: String
         }
     );
 

@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
     res.json({message: "Welcome to kelllyco application."});
 });
 
-// require("./app/routes/tutorial.routes")(app);
+require("./app/routes/product.routes")(app);
 // require("./app/routes/author.routes")(app);
 
 // set port, listen for requests
