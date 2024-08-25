@@ -10,7 +10,7 @@ export class ProductsEffects {
         () => this.actions$
             .pipe(
                 ofType(prodActions.loadProducts),
-                concatMap(action => this.http.findAllProducts()),
+                concatMap(() => this.http.findAllProducts()),
                 map(products => prodActions.productsLoaded({products}))
                 )
             )

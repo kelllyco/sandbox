@@ -6,6 +6,7 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductsModule } from './products/products.module';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     AboutModule,
-    HomeModule
+    HomeModule,
+    ProductsModule
   ]
 })
 export class PagesModule { }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as prodActions from "./redux/products.actions"
 import { Store } from '@ngrx/store';
 import { product } from './products.model';
-import { ProdState } from './redux/products.reducer';
+import { AppState, ProdState, selectAllProducts } from './redux/products.reducer';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,10 +12,12 @@ import { Observable } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private store: Store<ProdState>) {}
+  products$: Observable<product[]> | null = null;
+
+  constructor(private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(prodActions.loadProducts());
-
+    this.products$ = this.store.select(selectAllProducts);
   }
 }

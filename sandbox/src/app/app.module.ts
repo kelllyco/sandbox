@@ -27,7 +27,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({ prod: prodReducer}, {
+    StoreModule.forRoot({ productsStore: prodReducer}, {
       runtimeChecks: {
         strictStateImmutability: true, // state in store is never accidentally mutated by app code
         strictActionImmutability: true, // actions cannot be mutated either, important for most dev tools (no good reason to mutate it)

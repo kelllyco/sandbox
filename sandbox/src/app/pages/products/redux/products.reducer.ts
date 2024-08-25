@@ -6,6 +6,11 @@ export interface ProdState {
     products: product[];
 }
 
+// TODO move this out
+export interface AppState {
+    productsState: ProdState;
+}
+
 export const initProdState: ProdState = {
     products: [],
 };
@@ -14,10 +19,17 @@ export const prodReducer = createReducer(
     initProdState,
 
     on(prodActions.productsLoaded, (state, action) => {
-        console.log(action.products);
         return {
             ...state,
             products: action.products
         }
     })
+);
+
+export const selectProductsState = createFeatureSelector<ProdState>('productsStore');
+
+export const selectAllProducts = createSelector(
+    selectProductsState,
+    (state: ProdState) => state.products
+
 );

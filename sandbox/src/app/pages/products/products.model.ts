@@ -1,10 +1,10 @@
 
 export interface product {
-    productName: string;
-    productDescription: string;
-    productCategory: string;
-    productPrice: number;
-    productAvailability: boolean;
-    productImage: string;
+    name: string;
+    description: string;
+    category: string;
+    price: number;
+    available: boolean;
+    image: string;
 
 }
