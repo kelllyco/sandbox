@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import * as prodActions from "./products.actions";
-import { concatMap, map } from "rxjs";
+import { concatMap, delay, map } from "rxjs";
 import { AppHttpService } from "../../../../api/app.service";
 
 @Injectable()

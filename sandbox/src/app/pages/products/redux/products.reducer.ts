@@ -4,6 +4,7 @@ import * as prodActions from "./products.actions";
 
 export interface ProdState {
     products: product[];
+    loading: boolean;
 }
 
 // TODO move this out
@@ -13,6 +14,7 @@ export interface AppState {
 
 export const initProdState: ProdState = {
     products: [],
+    loading: true,
 };
 
 export const prodReducer = createReducer(
@@ -21,7 +23,8 @@ export const prodReducer = createReducer(
     on(prodActions.productsLoaded, (state, action) => {
         return {
             ...state,
-            products: action.products
+            products: action.products,
+            loading: false,
         }
     })
 );
@@ -33,3 +36,8 @@ export const selectAllProducts = createSelector(
     (state: ProdState) => state.products
 
 );
+
+export const selectLoading = createSelector(
+    selectProductsState,
+    (state: ProdState) => state.loading
+)
