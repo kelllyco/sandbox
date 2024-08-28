@@ -1,6 +1,6 @@
 <div >
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Kate's Kitchen</a>
+    <a class="navbar-brand" routerLink="home">Kate's Kitchen</a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -9,5 +9,12 @@
       </ul>
     </div>
   </nav>
+
+  <body class="d-flex flex-column min-vh-100">
+    <div class="container my-5"><router-outlet /></div>
+    <div class="footer mt-auto bg-light">
+      <div class="col py-3">Kate's Kitchen est. 2024</div>
+    </div>
+  </body>
 </div>
-<router-outlet />
+

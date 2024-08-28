@@ -3,7 +3,7 @@ import * as prodActions from "./redux/products.actions"
 import { Store } from '@ngrx/store';
 import { product } from './products.model';
 import { AppState, ProdState, selectAllProducts, selectLoading } from './redux/products.reducer';
-import { Observable } from 'rxjs';
+import { Observable, filter, isEmpty, take } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +18,9 @@ export class ProductsComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch(prodActions.loadProducts());
+    this.products$.pipe(
+      take(1),
+      filter(prod => prod.length === 0)
+    ).subscribe(() => this.store.dispatch(prodActions.loadProducts()))
   }
 }
