@@ -1,15 +1,17 @@
 <div *ngIf="loading$ | async" class="d-flex justify-content-center">
-  <div class="spinner-border" role="status"></div>
+  <div class="spinner-border text-secondary" role="status"></div>
 </div>
-<div class="row">
-  <div *ngFor="let product of products$ | async" class="col">
-  <div class="card" style="width: 18rem;">
-    <img src={{product.image}} class="card-img-top" alt="...">
+<div class="card-grid">
+  <div *ngFor="let product of products$ | async" class="card" style="width: 18rem;">
+    <div *ngIf="imgLoading" class="d-flex justify-content-center align-content-center" style="height: 18rem;">
+      <div class="spinner-border text-secondary" role="status"></div>
+    </div>
+    <img src={{product.image}} (load)="onLoad()" class="card-img-top square" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text">{{product.description}}</p>
-      <a href="#" class="btn btn-info">Go somewhere</a>
+      <a href="#" class="btn btn-info">Add to Order</a>
     </div>
   </div>
 </div>
-</div>
+

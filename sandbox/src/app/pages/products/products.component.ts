@@ -3,7 +3,7 @@ import * as prodActions from "./redux/products.actions"
 import { Store } from '@ngrx/store';
 import { product } from './products.model';
 import { AppState, ProdState, selectAllProducts, selectLoading } from './redux/products.reducer';
-import { Observable, filter, isEmpty, take } from 'rxjs';
+import { Observable, filter, isEmpty, map, take } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -11,9 +11,10 @@ import { Observable, filter, isEmpty, take } from 'rxjs';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent implements OnInit {
-
   products$: Observable<product[]> = this.store.select(selectAllProducts);
   loading$: Observable<boolean> = this.store.select(selectLoading);
+  imgLoading: boolean = true;
+  
 
   constructor(private store: Store) {}
 
@@ -21,6 +22,14 @@ export class ProductsComponent implements OnInit {
     this.products$.pipe(
       take(1),
       filter(prod => prod.length === 0)
-    ).subscribe(() => this.store.dispatch(prodActions.loadProducts()))
+    ).subscribe(() => this.store.dispatch(prodActions.loadProducts()));
+    
   }
+
+  onLoad() {
+    this.imgLoading = false;
+  }
+
+
+
 }
