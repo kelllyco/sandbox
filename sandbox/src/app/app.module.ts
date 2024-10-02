@@ -9,6 +9,8 @@ import { AppHttpService } from '../api/app.service';
 import { HttpClientModule } from '@angular/common/http';
 import { prodReducer } from './pages/products/redux/products.reducer';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { FormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './helpers/http.interceptor';
 
 const routes: Routes = [
   {
@@ -38,8 +40,10 @@ const routes: Routes = [
     EffectsModule.forRoot([ProductsEffects]),
     HttpClientModule,
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    FormsModule,
+
   ],
-  providers: [AppHttpService],
+  providers: [AppHttpService, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule{}

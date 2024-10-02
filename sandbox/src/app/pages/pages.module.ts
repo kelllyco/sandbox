@@ -7,6 +7,12 @@ import { AboutModule } from './about/about.module';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductsModule } from './products/products.module';
+import { LoginModule } from './login/login.module';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterModule } from './register/register.module';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileModule } from './profile/profile.module';
 
 const routes: Routes = [
   {
@@ -20,6 +26,18 @@ const routes: Routes = [
   {
     path: "products",
     component: ProductsComponent
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "register",
+    component: RegisterComponent
+  },
+  {
+    path: "profile",
+    component: ProfileComponent
   }
 ];
 
@@ -31,7 +49,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     AboutModule,
     HomeModule,
-    ProductsModule
+    ProductsModule,
+    LoginModule,
+    RegisterModule,
+    ProfileModule
   ]
 })
 export class PagesModule { }
